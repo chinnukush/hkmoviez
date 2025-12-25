@@ -21,7 +21,6 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-
       gtag("config", "G-M480HLMVYW");
     </script>
 
@@ -35,11 +34,37 @@
     <link rel="icon" type="image/svg+xml" href="src/assets/images/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HK-Moviespoot - Stream, Dream, Repeat.</title>
+
+    <!-- Theme CSS Variables -->
+    <style>
+      :root {
+        --bg-color: #ffffff;
+        --text-color: #000000;
+      }
+      [data-theme="dark"] {
+        --bg-color: #121212;
+        --text-color: #ffffff;
+      }
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        transition: background-color 0.3s, color 0.3s;
+      }
+    </style>
+
+    <!-- Detect system preference -->
+    <script>
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme) {
+        document.documentElement.setAttribute("data-theme", savedTheme);
+      } else {
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.setAttribute("data-theme", prefersDark ? "dark" : "light");
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
-    <!-- Adestra tag -->
-<!--     <script type='text/javascript' src='//inactionaccompanyingstress.com/17/8a/18/178a185de04bfeb367b4ed9b28fd8814.js'></script> -->
   </body>
 </html>
